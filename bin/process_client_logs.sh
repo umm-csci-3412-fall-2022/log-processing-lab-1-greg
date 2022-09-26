@@ -1,8 +1,14 @@
 #!/usr/bin/env bash
 
-#This script takes a command line argument and processes log files from that argument. It then generats an
-#intermediate file called failed_login_data.txt in the bin directory.
+#Specified directory
+dir_name=$1
 
-$scratch= mkdir temp
+#Move to the specified directory and loop through all the log files extracting the relevant info and redirecting output to failed_login_data.txt
+for logfile in  "$dir_name"/var/log/*
+do
 
-rm -r temp
+	awk 'match($0, /([A-Z][a-z]+)\s+(\S+) (\S+):[0-9]+:[0-9]+.+Failed password .+ (\S+) from (\S+) port.+$/, groups) {print groups[1] " " groups[2] " " groups[3] " " groups[4] " " groups[5]}' < "${logfile}" >> failed_login_data.txt
+
+	done
+# Move the file into the correct directory.
+	mv failed_login_data.txt "$dir_name"

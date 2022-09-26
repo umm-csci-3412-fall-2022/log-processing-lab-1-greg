@@ -69,6 +69,6 @@ teardown() {
   bin/process_client_logs.sh data/discovery
   sort data/discovery/failed_login_data.txt > data/discovery_sorted.txt
   sort tests/discovery_failed_login_data.txt > data/target_sorted.txt
-  run diff -wbB data/target_sorted.txt data/discovery_sorted.txt
+  run diff -wbBc data/target_sorted.txt data/discovery_sorted.txt
   assert_success
 }
