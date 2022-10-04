@@ -7,7 +7,7 @@ dir_name=$1
 for logfile in  "$dir_name"/var/log/*
 do
 
-	awk 'match($0, /([A-Z][a-z]+)\s+(\S+) (\S+):[0-9]+:[0-9]+.+Failed password .+ (\S+) from (\S+) port.+$/, groups) {print groups[1] " " groups[2] " " groups[3] " " groups[4] " " groups[5]}' < "${logfile}" >> "${dir_name}/failed_login_data.txt"
+	awk 'match($0, /([A-Z][a-z]+)\s+(\S+) (\S+):[0-9]+:[0-9]+.+Failed password .+ (\S+) from (\S+) port.+$/, groups) {print groups[1] " " groups[2] " " groups[3] " " groups[4] " " groups[5]}' < "$logfile" >> "$dir_name"/failed_login_data.txt
 
 	done
 

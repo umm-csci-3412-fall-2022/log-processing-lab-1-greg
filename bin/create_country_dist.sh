@@ -3,7 +3,7 @@
 #Takes a single command line argument.
 dir_name="$1"
 
-for compdir in "$dir_name"/*/
+for compdir in "$dir_name"/*
 do
 	cut "$compdir"/failed_login_data.txt --delim=" " -f5 >> cut_IP.txt
 done
