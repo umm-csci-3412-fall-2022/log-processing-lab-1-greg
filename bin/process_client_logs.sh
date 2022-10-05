@@ -3,7 +3,8 @@
 #Specified directory
 dir_name=$1
 
-cd "$dir_name"
+cd "$dir_name" || exit
+
 #Move to the specified directory and loop through all the log files extracting the relevant info and redirecting output to failed_login_data.txt
 for logfile in var/log/*
 do
