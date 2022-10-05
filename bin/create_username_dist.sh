@@ -17,5 +17,4 @@ sort SCRATCH.txt | uniq -c |awk 'match($0, /([0-9]+) (\S+)/, group) {print "data
 
 ./bin/wrap_contents.sh SCRATCH2.txt html_components/username_dist "$dir_name"/username_dist.html
 
-rm SCRATCH.txt
 rm SCRATCH2.txt

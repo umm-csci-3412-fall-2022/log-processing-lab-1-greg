@@ -10,8 +10,7 @@ done
 
 sort cut_IP.txt > sorted_cut_IP.txt
 
-join sorted_cut_IP.txt etc/country_IP_map.txt | cut --delim=" " -f2 | sort | uniq -c  \
-	|awk ' match($0, /([0-9]+) (\S+)/, group) {print "data.addRow([\x27" group[2] "\x27, " group[1] "]);"}' >> scratch_data.txt
+join sorted_cut_IP.txt etc/country_IP_map.txt | cut --delim=" " -f2 | sort | uniq -c |awk ' match($0, /([0-9]+) (\S+)/, group) {print "data.addRow([\x27" group[2] "\x27, " group[1] "]);"}' >> scratch_data.txt
 
 ./bin/wrap_contents.sh scratch_data.txt html_components/country_dist "$dir_name"/country_dist.html
 
